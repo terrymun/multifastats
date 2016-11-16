@@ -237,11 +237,11 @@ ilist=['i','-i','info','-info','--info']
 nlist=['n','-n','notes','-notes','--notes']
 #=========================================================================#
 if len(sys.argv)==1: #This is the case when the script NO receive arguments (***THE "USER-INTERACTIVE" SCENARIO***).
-    print '- '*29+'-'
-    print 'Multifastats: Multi-Fasta Sequence Stats'
-    print '-'*41
-    print 'Show basic genomic statistics for a given set of sequences\nand optionally for each single sequence, too.'
-    print 'Made by D.R. LBBM, UPCH. '+vers
+    print('- '*29+'-')
+    print('Multifastats: Multi-Fasta Sequence Stats')
+    print('-'*41)
+    print('Show basic genomic statistics for a given set of sequences\nand optionally for each single sequence, too.')
+    print('Made by D.R. LBBM, UPCH. '+vers)
     mainout=1
     maininp=1
     lctinp=1
@@ -253,24 +253,24 @@ if len(sys.argv)==1: #This is the case when the script NO receive arguments (***
 #=========================================================================#
 elif len(sys.argv)==2: #This is the case when the script receive arguments asking for information.
     if args[1] in hlist:
-        print dochpini
-        print vers+dochpmid
-        print dochpend
+        print(dochpini)
+        print(vers+dochpmid)
+        print(dochpend)
         exitval()
     elif args[1] in vlist:
-        print docvrini
-        print vers+docvrend
+        print(docvrini)
+        print(vers+docvrend)
         exitval()
     elif args[1] in ilist:
-        print docinfo
+        print(docinfo)
         exitval()
     elif args[1] in nlist:
-        print docntini
-        print versnote
-        print docntend
+        print(docntini)
+        print(versnote)
+        print(docntend)
         exitval()
     else: #We will add more options for info in the future versions.
-        print "Incorrect way to give the arguments. See 'help' with '-h' or '--help' option."
+        print("Incorrect way to give the arguments. See 'help' with '-h' or '--help' option.")
         exitval()
 #=========================================================================#
 elif (len(sys.argv)>=3) and (('-f' or '--file') in args): #This is the case when the script receive arguments (***COMMAND-LINE SCENARIO***) and the file option correctly.
@@ -282,7 +282,7 @@ elif (len(sys.argv)>=3) and (('-f' or '--file') in args): #This is the case when
     if sys.argv[indf+1] in currDir: #If we receive the file name correctly.
         filename=sys.argv[indf+1] #Use this file to continue.
     else: #If receive the file name incorrectly.
-        print 'Incorrect file name given.'
+        print('Incorrect file name given.')
         exitval()
     if (('-l' in sys.argv) or ('--lmin' in args)):
         try:
@@ -292,7 +292,7 @@ elif (len(sys.argv)>=3) and (('-f' or '--file') in args): #This is the case when
         try:
             minlen=float(sys.argv[indlmin+1])
         except:
-            print "Incorrect value provided for minimum length. See 'help' with '-h' or '--help' option."
+            print("Incorrect value provided for minimum length. See 'help' with '-h' or '--help' option.")
             exitval()
     if (('-L' in sys.argv) or ('--lmax' in args)):
         try:
@@ -302,7 +302,7 @@ elif (len(sys.argv)>=3) and (('-f' or '--file') in args): #This is the case when
         try:
             maxlen=float(sys.argv[indlmax+1])
         except:
-            print "Incorrect value provided for maximum length. See 'help' with '-h' or '--help' option."
+            print("Incorrect value provided for maximum length. See 'help' with '-h' or '--help' option.")
             exitval()
     if (('-p' or '--pseudo') in args):
         try:
@@ -312,10 +312,10 @@ elif (len(sys.argv)>=3) and (('-f' or '--file') in args): #This is the case when
         try:
             nrep=int(sys.argv[indps+1])
         except:
-            print "Incorrect value provided for the number of repeats. See 'help' with '-h' or '--help' option."
+            print("Incorrect value provided for the number of repeats. See 'help' with '-h' or '--help' option.")
             exitval()
         if nrep<0:
-            print "Incorrect value provided for the number of repeats. See 'help' with '-h' or '--help' option."
+            print("Incorrect value provided for the number of repeats. See 'help' with '-h' or '--help' option.")
             exitval()
     else:
         testps=0
@@ -327,17 +327,17 @@ elif (len(sys.argv)>=3) and (('-f' or '--file') in args): #This is the case when
         try:
             kmrlen=int(sys.argv[indkm+1])
         except:
-            print "Incorrect value provided for the length of k-mers. See 'help' with '-h' or '--help' option."
+            print("Incorrect value provided for the length of k-mers. See 'help' with '-h' or '--help' option.")
             exitval()
         if kmrlen<=0:
-            print "Incorrect value provided for the length of k-mers. See 'help' with '-h' or '--help' option."
+            print("Incorrect value provided for the length of k-mers. See 'help' with '-h' or '--help' option.")
             exitval()
     else:
         testkmr=0
     testsga=0 if (('-s' or '--single') not in args) else 1 #This means that we will do the single analysis if -s option is given.
     testsbg=0 if (('-o' or '--outsbg') not in args) else 1 #This means that we will produce the output of the subgroup of sequences analyzed if -o option is given.
 else: #Any other case
-    print "Incorrect way to give the arguments. See 'help' with '-h' or '--help' option."
+    print("Incorrect way to give the arguments. See 'help' with '-h' or '--help' option.")
     exitval()
 #=========================================================================#
 def complete(text, state): #Setting the autocomplete capability of the script.
@@ -359,50 +359,50 @@ if maininp: #This means that I need a manual input: THE "USER-INTERACTIVE" SCENA
             readline.parse_and_bind("tab: complete")
             readline.set_completer(complete)
         except ImportError:
-            print "\n"+"*"*79+"\nWARNING!: The readline or pyreadline (32bits x86) packages are necesary to run.\nYou will download it from: https://pypi.python.org/pypi/pyreadline/\nSee the 'help' file below."+"*"*79
-            print dochpini
-            print vers+dochpmid
-            print dochpend
+            print("\n"+"*"*79+"\nWARNING!: The readline or pyreadline (32bits x86) packages are necesary to run.\nYou will download it from: https://pypi.python.org/pypi/pyreadline/\nSee the 'help' file below."+"*"*79)
+            print(dochpini)
+            print(vers+dochpmid)
+            print(dochpend)
             exitval()
     while maininp: #If we are in the user-interactive mode to input multifasta file, this continue asking for an existing file name in the directory as input file:
-        print "-"*79+"\nTO RUN: Just write the name of the file you want to analyze."
-        print "See 'help' giving the options '-h' or '--help' below, or from\nthe command-line as follows: >>~$ python multifastats.py -h"
+        print("-"*79+"\nTO RUN: Just write the name of the file you want to analyze.")
+        print("See 'help' giving the options '-h' or '--help' below, or from\nthe command-line as follows: >>~$ python multifastats.py -h")
         if usersys in ('Windows','Linux'):
-            print "(autocomplete allowed using 'TAB' key)"
+            print("(autocomplete allowed using 'TAB' key)")
         else:
-            print "You are in "+usersys+". Please, do not use 'TAB' key. Autocomplete not implemented."
+            print("You are in "+usersys+". Please, do not use 'TAB' key. Autocomplete not implemented.")
         filename=raw_input("File name or Option: ") #Asking for a filename or option, to store in the variable filename.
         options=hlist+vlist+ilist+nlist
         if filename.lower() in options: #If the input received in filename is an option instead the name of a file.
             maininp=0 #This means that we get a correct file name or option, so we will use this to continue.
             lctinp=0
             if filename.lower() in hlist:
-                print dochpini
-                print vers+dochpmid
-                print dochpend
+                print(dochpini)
+                print(vers+dochpmid)
+                print(dochpend)
             elif filename.lower() in vlist:
-                print docvrini
-                print vers+docvrend
+                print(docvrini)
+                print(vers+docvrend)
             elif filename.lower() in ilist:
-                print docinfo
+                print(docinfo)
             elif filename.lower() in nlist:
-                print docntini
-                print versnote
-                print docntend
+                print(docntini)
+                print(versnote)
+                print(docntend)
             else: #We will add more options for info in the future versions.
-                print "\nIncorrect way to give the arguments. See 'help' with '-h' or '--help' option."
+                print("\nIncorrect way to give the arguments. See 'help' with '-h' or '--help' option.")
             exitval()
         elif filename in os.listdir(os.getcwd()): #If the input received in filename is the name of a file.
             maininp=0 #This means that we get a correct file name or option, so we will use this to continue.
             pass
         else:
-            print "\nBad file name or option, try again or press 'Ctrl+C' to exit."
+            print("\nBad file name or option, try again or press 'Ctrl+C' to exit.")
             pass
 #=========================================================================#
 if lctinp:
     clinp=0 #This variable allows to verify if a valid value for L is given.
-    print '- '*29+'-'
-    print "Do you want to analyze all the sequences? Or just a subset\nof them between a minimum and a maximum length?"
+    print('- '*29+'-')
+    print("Do you want to analyze all the sequences? Or just a subset\nof them between a minimum and a maximum length?")
     ctlnopt=int(raw_input("Please, choose one option: (1, 2, 3 or 4)\n\n1) Analyze all the sequences\n2) A subset above a minimum sequence length (Lmin)\n3) A subset below a maximum sequence length (Lmax)\n4) A subset between a Lmin and Lmax values\n\nEnter your option:"))
     while (ctlnopt not in (1, 2, 3, 4)):
         ctlnopt=int(raw_input("Bad input given. Please, choose one option: (1, 2, 3 or 4)\n\n1) Analyze all the sequences\n2) A subset above a minimum sequence length (Lmin)\n3) A subset below a maximum sequence length (Lmax)\n4) A subset between a Lmin and Lmax values\n\nEnter your option:"))
@@ -416,10 +416,10 @@ if lctinp:
                     clinp=1 #Correct value of l given, continue.
                     minlen=float(tochklc)
                 else:
-                    print "Incorrect value provided for minimum length."
+                    print("Incorrect value provided for minimum length.")
                     pass
             except ValueError:
-                print "A positive number is required as value for length."
+                print("A positive number is required as value for length.")
                 pass
     elif ctlnopt==3:
         while clinp==0:
@@ -429,10 +429,10 @@ if lctinp:
                     clinp=1 #Correct value of L given, continue.
                     maxlen=float(tochklc)
                 else:
-                    print "Incorrect value provided for maximum length."
+                    print("Incorrect value provided for maximum length.")
                     pass
             except ValueError:
-                print "A positive number is required as a value for length."
+                print("A positive number is required as a value for length.")
                 pass
     elif ctlnopt==4:
         while clinp==0:
@@ -442,10 +442,10 @@ if lctinp:
                     clinp=1 #Correct value of l given, continue.
                     minlen=float(tochklc)
                 else:
-                    print "Incorrect value provided for minimum length."
+                    print("Incorrect value provided for minimum length.")
                     pass
             except ValueError:
-                print "A positive number is required as a value for length."
+                print("A positive number is required as a value for length.")
                 pass
         clinp=0 #Give 0 to clinp to evaluate a new input (now for Lmax).
         while clinp==0:
@@ -455,10 +455,10 @@ if lctinp:
                     clinp=1 #Correct value of L given, continue.
                     maxlen=float(tochklc)
                 else:
-                    print "Incorrect value provided for maximum length."
+                    print("Incorrect value provided for maximum length.")
                     pass
             except ValueError:
-                print "A positive number is required as a value for length."
+                print("A positive number is required as a value for length.")
                 pass
 #=========================================================================#
 #Import some extra libraries to use in the next procedures.
@@ -468,7 +468,7 @@ try:
     from Bio.Alphabet.IUPAC import IUPACAmbiguousDNA, IUPACAmbiguousRNA, ExtendedIUPACProtein
     from Bio.Alphabet import ProteinAlphabet, _verify_alphabet
 except ImportError:
-    print "The package 'biopython' is necesary to run.\nSee 'help' with '-h' or '--help' option."
+    print("The package 'biopython' is necesary to run.\nSee 'help' with '-h' or '--help' option.")
     exitval()
 #=========================================================================#
 def seqcategory(oneseq):
@@ -494,7 +494,7 @@ def lenfilter(strseq,strid,lmin,lmax,warn):
             return 1, typeseq
         elif typeseq=='noseq': #If invalid format, ignore this sequence.
             if warn==1:
-                print 'WARNING!: Sequence '+strid+' has invalid format and not taken in account.'
+                print('WARNING!: Sequence '+strid+' has invalid format and not taken in account.')
             return 0, ''
         else:
             return 0, ''
@@ -503,7 +503,7 @@ def lenfilter(strseq,strid,lmin,lmax,warn):
             return 1, typeseq
         elif typeseq=='noseq': #If invalid format, ignore this sequence.
             if warn==1:
-                print 'WARNING!: Sequence '+strid+' has invalid format and not taken in account.'
+                print('WARNING!: Sequence '+strid+' has invalid format and not taken in account.')
             return 0, ''
         else:
             return 0, ''
@@ -517,9 +517,9 @@ def N50(lenlist): #N50 calculation, based on the Broad Institute definition: htt
         wghtlist += [i]*i
     #Take the median of the weighted list of lengths:
     if len(wghtlist) % 2 == 0:
-        return float(wghtlist[len(wghtlist)/2] + wghtlist[len(wghtlist)/2-1])/2
+        return float(wghtlist[len(wghtlist)//2] + wghtlist[len(wghtlist)//2-1])/2
     else:
-        return wghtlist[len(wghtlist)/2]
+        return wghtlist[len(wghtlist)//2]
 #=========================================================================#
 def pseudoseq(filenm,numrep,lmin,lmax,ctime,warn):
     from Bio.SeqRecord import SeqRecord
@@ -544,8 +544,8 @@ def pseudoseq(filenm,numrep,lmin,lmax,ctime,warn):
     newseq.seq=newseq.seq[:-numrep] #This step is to cut the last Ns or Xs added by the for-loop.
     SeqIO.write(newseq, pseudo_handle, "fasta")
     pseudo_handle.close()
-    print 'A .fasta file with the pseudosequence has been wrote in\nyour current working directory:'
-    print '('+psfilenm+')'
+    print('A .fasta file with the pseudosequence has been wrote in\nyour current working directory:')
+    print('('+psfilenm+')')
 #=========================================================================#
 def subgroupseq(filenm,lmin,lmax,ctime,warn):
     sbgrpfilenm="subgroup_"+filenm.replace(".","")+"_"+ctime+".fasta"
@@ -557,8 +557,8 @@ def subgroupseq(filenm,lmin,lmax,ctime,warn):
             SeqIO.write(eachseq, sbgrp_handle, "fasta") #If the sequence passes the filter, is writen in the file.
     multifst.close()
     sbgrp_handle.close()
-    print 'A .fasta file with the sequences analyzed has been wrote in\nyour current working directory:'
-    print '('+sbgrpfilenm+')'
+    print('A .fasta file with the sequences analyzed has been wrote in\nyour current working directory:')
+    print('('+sbgrpfilenm+')')
 #=========================================================================#
 def kmercutter(filenm,klen,lmin,lmax,ctime,warn):
     kmerfilenm=str(klen)+"mer_"+filenm.replace(".","")+"_"+ctime+".fasta"
@@ -573,8 +573,8 @@ def kmercutter(filenm,klen,lmin,lmax,ctime,warn):
                 kmer_handle.write(kmerline)
     seqsfile.close()
     kmer_handle.close()
-    print 'A .fasta file with the k-mers has been wrote in\nyour current working directory:'
-    print '('+kmerfilenm+')'
+    print('A .fasta file with the k-mers has been wrote in\nyour current working directory:')
+    print('('+kmerfilenm+')')
 #=========================================================================#
 def singanlys(filenm,lmin,lmax,ctime,warn):
     from Bio.SeqUtils import GC, molecular_weight
@@ -599,13 +599,13 @@ def singanlys(filenm,lmin,lmax,ctime,warn):
     for i in range(len(contgslen)): #This is a external resource of the function. If you want to make the function independent from the rest of the code, provide the contgslen list as input.
         count+=1
         newlinecsv=str(count)+','+str(idsnocom[i])+','+typesofseqs[i]+','+str(contgslen[i])+','+"{0:.2f}".format(gcs[i])+','+"{0:.2f}".format(molwght[i])+'\n' #If we want to use the function independently, we need to change this line to: #newlinecsv=str(count)+','+str(idsnocom[i])+','+str(listcntgslen[i])+','+"{0:.2f}".format(listgcs[i])+','+"{0:.2f}".format(molwght[i])+'\n'
-        #print newlinecsv #I left this line because maybe someone wants to see the output in the python interpreter.
+        #print(newlinecsv #I left this line because maybe someone wants to see the output in the python interpreter.)
         outpbyseqcsv.write(newlinecsv)
     multifs.close()
     outpbyseqcsv.close()
-    print 'A .csv file has been wrote with the single sequence stats in\nyour current working directory:'
-    print '('+singlefilenm+')'
-    print '\nThank you!'
+    print('A .csv file has been wrote with the single sequence stats in\nyour current working directory:')
+    print('('+singlefilenm+')')
+    print('\nThank you!')
 #=========================================================================#
 sqfs = open(filename,"rU")
 numGC=0
@@ -635,47 +635,47 @@ if len(contgslen)>0:
     totGC=numGC*100.0/totlen
     wrng=0 #Turn off the warnings for ignored sequences, these have to be shown at this point.
 else:
-    print "There is no sequence to analyze. Please, check your file and\nthe value of length given."
+    print("There is no sequence to analyze. Please, check your file and\nthe value of length given.")
     exitval()
 #=========================================================================#
 if mainout:
-    print '- '*29+'-'
+    print('- '*29+'-')
     if (minlen>0 and maxlen==0):
-        print '***Only analyzing the sequences of Length>='+str(minlen)
+        print('***Only analyzing the sequences of Length>='+str(minlen))
     elif (minlen==0 and maxlen>0):
-        print '***Only analyzing the sequences of Length=<'+str(maxlen)
+        print('***Only analyzing the sequences of Length=<'+str(maxlen))
     elif (minlen>0 and maxlen>0):
-        print '***Only analyzing the sequences of Length: '+str(minlen)+' =< Length =< '+str(maxlen)
-    print 'Filename:\t\t'+filename
-    print 'Type(s) of sequences:\t'+', '.join(types)
-    print 'Number of sequence:\t'+str(numseqs)
-    print 'Min length:\t\t'+str(min(contgslen))
-    print 'Max length:\t\t'+str(max(contgslen))
-    print 'Average length:\t\t'+"{0:.2f}".format(avelen)
-    print 'N50 value:\t\t'+"{0:.2f}".format(N50(contgslen))
-    print 'Number of residues:\t'+str(totlen)
-    print 'Total %GC in file:\t'+"{0:.2f}".format(totGC)
-    print '- '*29+'-'
+        print('***Only analyzing the sequences of Length: '+str(minlen)+' =< Length =< '+str(maxlen))
+    print('Filename:\t\t'+filename)
+    print('Type(s) of sequences:\t'+', '.join(types))
+    print('Number of sequence:\t'+str(numseqs))
+    print('Min length:\t\t'+str(min(contgslen)))
+    print('Max length:\t\t'+str(max(contgslen)))
+    print('Average length:\t\t'+"{0:.2f}".format(avelen))
+    print('N50 value:\t\t'+"{0:.2f}".format(N50(contgslen)))
+    print('Number of residues:\t'+str(totlen))
+    print('Total %GC in file:\t'+"{0:.2f}".format(totGC))
+    print('- '*29+'-')
     pass
 else:
-    print '- '*34+'-'
-    print 'Program:\t\tmultifastats - '+vers+' Rev by D.R.'
-    print 'Filename:\t\t'+filename
+    print('- '*34+'-')
+    print('Program:\t\tmultifastats - '+vers+' Rev by D.R.')
+    print('Filename:\t\t'+filename)
     if (minlen>0 and maxlen==0):
-        print '***Only analyzing the sequences of Length>='+str(minlen)+'.'
+        print('***Only analyzing the sequences of Length>='+str(minlen)+'.')
     elif (minlen==0 and maxlen>0):
-        print '***Only analyzing the sequences of Length=<'+str(maxlen)+'.'
+        print('***Only analyzing the sequences of Length=<'+str(maxlen)+'.')
     elif (minlen>0 and maxlen>0):
-        print '***Only analyzing the sequences of Length: '+str(minlen)+' =< Length =< '+str(maxlen)+'.'
-    print 'Type(s) of sequences:\t'+', '.join(types)
-    print 'Number of sequences:\t'+str(numseqs)
-    print 'Min length:\t\t'+str(min(contgslen))
-    print 'Max length:\t\t'+str(max(contgslen))
-    print 'Average length:\t\t'+"{0:.2f}".format(avelen)
-    print 'N50 value:\t\t'+"{0:.2f}".format(N50(contgslen))
-    print 'Number of residues:\t'+str(totlen)
-    print 'Total %GC in file:\t'+"{0:.2f}".format(totGC)
-    print '- '*34+'-'
+        print('***Only analyzing the sequences of Length: '+str(minlen)+' =< Length =< '+str(maxlen)+'.')
+    print('Type(s) of sequences:\t'+', '.join(types))
+    print('Number of sequences:\t'+str(numseqs))
+    print('Min length:\t\t'+str(min(contgslen)))
+    print('Max length:\t\t'+str(max(contgslen)))
+    print('Average length:\t\t'+"{0:.2f}".format(avelen))
+    print('N50 value:\t\t'+"{0:.2f}".format(N50(contgslen)))
+    print('Number of residues:\t'+str(totlen))
+    print('Total %GC in file:\t'+"{0:.2f}".format(totGC))
+    print('- '*34+'-')
 #=========================================================================#
 if testps or testsga or testsbg or testkmr:
     import time
@@ -689,17 +689,17 @@ if testsbg:
         while testsbg:
             sbgopt=raw_input("\nDo you want to generate a multifasta file with the sequences analyzed?\nWrite 'Y' to make it or 'N' to continue): ")
             if sbgopt.lower() in yesopt:
-                print '\nDONE:'
+                print('\nDONE:')
                 subgroupseq(filename,int(minlen),int(maxlen),currTime,wrng)
-                print '- '*29+'-'
+                print('- '*29+'-')
                 testsbg=0
             elif sbgopt.lower() in noopt:
                 testsbg=0
             else:
-                print "Bad option, try again."
+                print("Bad option, try again.")
     else: #If we are in the command-line mode and the parameter for the subgroup output is given, do the analysis.
         subgroupseq(filename,int(minlen),int(maxlen),currTime,wrng)
-        print '- '*34+'-'
+        print('- '*34+'-')
         timeout(1)
 #=========================================================================#
 if testps:
@@ -712,22 +712,22 @@ if testps:
                     nrep=raw_input("Please, give the NUMBER of repeats of the ambiguous\nresidue to concatenate the sequences: ")
                     try:
                         if int(nrep)>=0:
-                            print '\nDONE:'
+                            print('\nDONE:')
                             pseudoseq(filename,int(nrep),int(minlen),int(maxlen),currTime,wrng) #Correct number of repetitions, continue.
-                            print '- '*29+'-'
+                            print('- '*29+'-')
                             pschk=0
                             testps=0
                         else:
-                            print "Incorrect value provided for the NUMBER of repeats, try again."
+                            print("Incorrect value provided for the NUMBER of repeats, try again.")
                     except ValueError:
-                        print "A positive value is required as a NUMBER of repeats. Try again."
+                        print("A positive value is required as a NUMBER of repeats. Try again.")
             elif psopt.lower() in noopt:
                 testps=0
             else:
-                print "Bad option, try again."
+                print("Bad option, try again.")
     else: #If we are in the command-line mode and the parameters for pseudosequence output were given, do the analysis.
         pseudoseq(filename,int(nrep),int(minlen),int(maxlen),currTime,wrng)
-        print '- '*34+'-'
+        print('- '*34+'-')
         timeout(1)
 #=========================================================================#
 if testkmr:
@@ -740,22 +740,22 @@ if testkmr:
                     kmrlen=raw_input("Please, give a NUMBER for the length of the fragments (k-mers): ")
                     try:
                         if int(kmrlen)>0:
-                            print '\nDONE:'
+                            print('\nDONE:')
                             kmercutter(filename,int(kmrlen),int(minlen),int(maxlen),currTime,wrng) #Correct length of kmers, continue.
-                            print '- '*29+'-'
+                            print('- '*29+'-')
                             kmrchk=0
                             testkmr=0
                         else:
-                            print "Incorrect value provided for the length of the fragments, try again."
+                            print("Incorrect value provided for the length of the fragments, try again.")
                     except ValueError:
-                        print "A positive number is required as a value for length. Try again."
+                        print("A positive number is required as a value for length. Try again.")
             elif kmropt.lower() in noopt:
                 testkmr=0
             else:
-                print "Bad option, try again."
+                print("Bad option, try again.")
     else: #If we are in the command-line mode and the parameters for the kmer output were given, do the analysis.
         kmercutter(filename,int(kmrlen),int(minlen),int(maxlen),currTime,wrng)
-        print '- '*34+'-'
+        print('- '*34+'-')
         timeout(1)
 #=========================================================================#
 if testsga:
@@ -763,25 +763,25 @@ if testsga:
         while testsga:
             sgaopt=raw_input("\nDo you want statistics for each single sequence?\nWrite 'Y' to calculate or 'N' to finish): ")
             if sgaopt.lower() in yesopt:
-                print '\nDONE:'
+                print('\nDONE:')
                 singanlys(filename,int(minlen),int(maxlen),currTime,wrng)
-                print '- '*29+'-'
+                print('- '*29+'-')
                 testsga=0
                 exitval()
             elif sgaopt.lower() in noopt:
-                print '\nThank you!'
-                print '- '*29+'-'
+                print('\nThank you!')
+                print('- '*29+'-')
                 testsga=0
                 exitval()
             else:
-                print "Bad option, try again."
+                print("Bad option, try again.")
                 pass
     else: #If we are in the command-line mode and the parameter for single analysis is given, do the analysis.
         singanlys(filename,int(minlen),int(maxlen),currTime,wrng)
-        print '- '*34+'-'
+        print('- '*34+'-')
         timeout(1)
         exit()
 else:
-    print 'Thank you!'
-    print '- '*34+'-'
+    print('Thank you!')
+    print('- '*34+'-')
     exitval()
